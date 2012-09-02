@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+         
+{% block title %}Daily Rings: {{ image.title }} {% endblock %}
+
+{% block meta_description %}   
+<meta name = "description" content = "{{ caption_short }}">
+{% endblock %}                
+
+
+{% block more_head %}
+	<link rel = "image_src" href = "{{MEDIA_URL }}ring_images/{{image.jpg }}"> 
+{% endblock %}
+
+{% block content %}
+
+<div id = "header">
+	<h1>
+		<a href = "/">Daily Rings</a> 
+		<br>{{ date }}
+	</h1>
+	
+	<ul id = "nav">
+		{% if prev %}
+			<li id = "prev"><a href = "/{{ prev }}/">prev</a></li>
+		{% endif %}
+
+
+		{% if next %}
+			<li id = "next"><a href = "/{{ next }}/">next</a></li>
+		{% endif %}
+	</ul>
+
+</div>
+
+<div id = "image">	
+	<a href = "{{MEDIA_URL }}ring_images/{{image.jpg }}">
+		<img src = "{{MEDIA_URL }}ring_images/{{image.jpg }}" alt = "{{image.title}}">
+	</a>
+
+	<div id = "like">    <!--- social like buttons -->          
+		<span class = "plus_box">
+			<g:plusone></g:plusone>
+		</span>
+		<span class = "like_box2">
+		<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="http://dailyrings.org/{{str_date}}/" show_faces="false" width="200" font="verdana" colorscheme="dark"></fb:like>
+		<!-- Place this tag where you want the +1 button to render -->
+		</span>
+		<!--  Place this tag after the last plusone tag -->
+		<script type="text/javascript">
+		  (function() {
+		    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+		    po.src = 'https://apis.google.com/js/plusone.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+		  })();
+		</script>
+	                
+		<!-- Include ONCE for ALL buttons in the page -->
+		<script type="text/javascript">
+		(function() {
+		    window.PinIt = window.PinIt || { loaded:false };
+		    if (window.PinIt.loaded) return;
+		    window.PinIt.loaded = true;
+		    function async_load(){
+		        var s = document.createElement("script");
+		        s.type = "text/javascript";
+		        s.async = true;
+		        if (window.location.protocol == "https:")
+		            s.src = "https://assets.pinterest.com/js/pinit.js";
+		        else
+		            s.src = "http://assets.pinterest.com/js/pinit.js";
+		        var x = document.getElementsByTagName("script")[0];
+		        x.parentNode.insertBefore(s, x);
+		    }
+		    if (window.attachEvent)
+		        window.attachEvent("onload", async_load);
+		    else
+		        window.addEventListener("load", async_load, false);
+		})();
+		</script>
+
+		<!-- Customize and include for EACH button in the page -->      
+		<a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fdailyrings.org%2F{{str_date}}&media={{MEDIA_URL }}ring_images/{{image.jpg }}&description={{image.title}}: {{ caption_short }}" class="pin-it-button" count-layout="horizontal">Pin It</a>   
+
+	</div> <!-- end like -->
+	<div style = "clear:both"></div>
+</div>
+
+
+<div id = "content">
+	
+	<!-- social sharing gadget -->
+	<div id = "share"> 
+		<!-- AddToAny mess BEGIN -->
+		<a class="a2a_dd" 		href="http://www.addtoany.com/share_save?linkurl=http%3A%2F%2Fplanetaryrings.com%2F{{image.str_date}}&amp;linkname=Planetary%20Rings"><img src="http://static.addtoany.com/buttons/share_save_171_16.png" width="171" height="16" alt="Share"></a>
+		<script type="text/javascript">
+		var a2a_config = a2a_config || {};
+		a2a_config.linkname = "{{image.title}}";
+		a2a_config.linkurl = "http://dailyrings.org/{{str_date}}";
+		</script>
+		<script type="text/javascript" src="http://static.addtoany.com/menu/page.js"></script>
+		<!-- AddToAny END -->
+	</div>	      
+	
+	<p id = "msg">
+		{% if msg %}
+			{{ msg }}
+		{% endif %}
+	</p>	
+	
+	<h2 id = "title">{{ image.title }}</h2>
+  
+	<div id = "caption">{{ image.caption|safe }}</div>	
+
+	<div id = "credit">
+		<div>courtesy {{ image.credit }}</div>
+
+		<div id = "name">image id: {{image.name }}</div>
+	</div>
+	
+	<!-- this image's link -->
+	<div id = "more_info">
+		<a href = "{{ image.more_info }}" target = "_blank">
+			more info and image formats
+		</a>
+	</div>
+	
+</div> <!-- end content -->
+
+{% endblock %}
+

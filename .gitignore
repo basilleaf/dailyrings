@@ -1,0 +1,11 @@
+*.pyc
+*.save
+*.bak
+.DS_Store
+static_media/ring_images
+static_media/css/images/
+settings.py
+import
+publish
+deploy.txt
+libs

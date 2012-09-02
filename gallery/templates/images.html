@@ -1,0 +1,9 @@
+	{% for i in images %}      
+			 <div class = "image">
+				 <!-- a href = "/preview/{{i.str_date}}" -->
+				 <a href = "/{{i.str_date}}">
+					<img width = "150" src = "http://media.planetaryrings.com/{{i.jpg}}">
+				 </a>   
+				 <div class = "caption">{{i.pub_date}}</div>
+			</div>
+	{% endfor %}                                  

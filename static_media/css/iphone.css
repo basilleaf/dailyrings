@@ -1,0 +1,102 @@
+body {
+    background-color: black;
+    font-family: Helvetica;
+    font-size:14px;
+    margin: 0;
+    padding: 0;
+}
+#like {
+ width:500px;
+}
+A:link {text-decoration: none}
+A:visited {text-decoration: none}
+A:active {text-decoration: none}    
+A:hover {text-decoration: underline;}
+
+#msg {
+    color:green;
+    text-align:center;
+}
+#header h1 a{
+    color:#505050;
+}
+#prev a, #next a, #homelink a {
+    color:white;
+}
+#homelink {
+    text-align: center;
+}
+#date > p, #title {
+    padding: 0;
+    margin: 0;
+}
+#content, #footer {
+    background-color:white;
+    padding: 0;
+    font-size:50px;
+    margin:0;
+    width:900px;
+}
+#content div {
+    padding:10px;
+}
+#nav {
+    width: 100%;
+    margin: -60px auto 0px auto;
+    padding: 5px;
+    font-size: 28px;
+    height: 2em;
+    width:400px
+}
+#nav ul li a {
+     list-style: none;
+     background-color: #FFFFFF;
+     border: 1px solid #999999;
+     color: #222222;
+     display: block;
+     font-size: 17px;
+     font-weight: bold;
+     margin-bottom: 5px;
+     margin-top: -20px;
+     text-decoration: none;
+}
+#prev {
+     float: left;
+}
+ #next {
+     float: right;
+} 
+#image {
+  width:700px;
+}
+
+#image img {
+    max-height:500px;
+    margin:0 auto;
+    margin-top:-50px;
+}
+#credit {
+    margin-top: -40px;
+}
+#header { 
+    width:640px;
+ }
+#header h1 {
+    width: 100%;
+    color:#FFFFFF;
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 10px 0;
+    text-align: center;
+    text-decoration: none;
+
+
+}
+#footer, #footer div{
+    margin: 0;
+    text-align: center;
+}    
+.elsewhere > a > img {
+    border-style: none;
+}

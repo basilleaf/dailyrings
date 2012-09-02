@@ -1,0 +1,128 @@
+body {
+    /* background: #303030; */
+    background: black;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    margin:0;
+    padding:0;
+}
+html {
+    margin:0;
+    padding:0;
+}
+A:link {text-decoration: none}
+A:visited {text-decoration: none}
+A:active {text-decoration: none}    
+A:hover {text-decoration: underline;}
+
+#like {        a
+    width:470px;         
+    padding:0px 20px;
+}
+#like > span.plus_box {
+    padding:0px 10px;
+    float:left;
+}
+#like > span.like_box {
+    padding:0px 10px;
+    float:right;
+}  
+
+#date {
+    margin: 20px;
+}
+#share, #date, #title, #more_info, #like {
+    text-align:center;
+}
+#like {
+    margin: 30px auto;         
+    text-align:right;
+}           
+#like #PinItButton {
+	margin-left:40px;
+}
+      
+ 
+#msg {
+    color:green;
+}
+#header h1 {
+    color:#E8E8E8;
+    font-size: small;
+    text-align:center;
+    width: 100%;
+}
+#header h1 a{
+    color:#E8E8E8;
+}
+#nav {
+    width: 25%;
+    margin: -30px auto 0px auto;
+    padding: 5px;
+    
+}
+#nav li {
+    display:inline;
+    list-style-type:none
+}
+#prev a, #next a, #home a {
+    color:white;
+}
+
+#prev {
+    float:left;
+    text-align:left;
+}
+#next {
+    float:right;
+    text-align:right;
+}
+
+#image {
+    display:block;
+    clear:both;
+    padding: 0;
+    margin: 40px 0px;
+    text-align:center;
+}
+#image img{
+    max-height:80%;
+    width: auto;
+    border: 1px solid #505050;
+}
+@-moz-document url-prefix() {
+    #image img  { height:500px; }
+}
+#content {
+    font-size:110%;
+    background-color: white;
+    background-image:url('http://media.planetaryrings.com/fadey.jpg');
+    background-repeat:repeat-x;
+    padding-top:15px;
+    padding: 15px 10%;
+}
+#error_page {
+    margin:0 0 -50px 0;
+    padding:10px 20px;
+}
+#credit, #footer, #error_page {
+    text-align: center;
+    background: white;
+}    
+#footer {
+    margin: 0px;
+    padding: 10px;
+}
+#footer div {
+    padding: 5px;
+}    
+#debug {
+    display:none;
+}
+#caption {
+    padding: 0px 10%;
+    text-align:left;
+}
+
+.elsewhere > a > img {
+    border-style: none;
+}
