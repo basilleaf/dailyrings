@@ -33,7 +33,6 @@ A:active {text-decoration: none}
 A:hover {text-decoration: underline;}
 
 
-
 #share, #date, #title, #more_info, #like {
     text-align:center;
 }
@@ -138,6 +137,11 @@ li#next {
 }
 @-moz-document url-prefix() {
     #image img  { max-height:500px; }
+}
+
+h2#title {
+    font-weight:normal;
+    font-size:160%;
 }
 #content {
     margin:0; padding:0;
