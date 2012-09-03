@@ -122,7 +122,6 @@ li#next {
     float:right;
 }
 
-
 #image {
     display:block;
     clear:both;
@@ -217,7 +216,15 @@ h2#title {
     #content {
         padding: 15px 20px;
     }
+    #image img {
+        border:3px solid green;
+        min-height: 400px;
+    }
  }
  
-/* Large desktop */
-@media (min-width: 1200px) {  }
+@media (min-width: 980px) { 
+    #image {
+        min-height: 400px;
+    }
+
+}
