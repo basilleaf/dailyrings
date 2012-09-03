@@ -6,7 +6,6 @@
 <meta name = "description" content = "{{ caption_short }}">
 {% endblock %}                
 
-
 {% block more_head %}
 	<link rel = "image_src" href = "{{MEDIA_URL }}ring_images/{{image.jpg }}"> 
 {% endblock %}
@@ -16,18 +15,15 @@
 <div id = "header">
 	<h1>
 		<a href = "/">Daily Rings</a> 
-		<br>{{ date }}
+
 	</h1>
-	
+	<h2> {{ date }} </h2>
+
+
+
 	<ul id = "nav">
-		{% if prev %}
-			<li id = "prev"><a href = "/{{ prev }}/">prev</a></li>
-		{% endif %}
-
-
-		{% if next %}
-			<li id = "next"><a href = "/{{ next }}/">next</a></li>
-		{% endif %}
+		<li {% if not prev %}style = "visibility:hidden" {% endif %} id = "prev"><a class = "btn btn-inverse" href = "/{{ prev }}/">prev</a></li>
+		<li {% if not next %}style = "visibility:hidden" {% endif %} id = "next"><a class = "btn btn-inverse" href = "/{{ next }}/">next</a></li> 
 	</ul>
 
 </div>
@@ -37,57 +33,38 @@
 		<img src = "{{MEDIA_URL }}ring_images/{{image.jpg }}" alt = "{{image.title}}">
 	</a>
 
-	<div id = "like">    <!--- social like buttons -->          
-		<span class = "plus_box">
+
+	<!--- social like buttons -->  
+	<ul id = "like">            
+		<li class = "plus_box">
 			<g:plusone></g:plusone>
-		</span>
-		<span class = "like_box2">
-		<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="http://dailyrings.org/{{str_date}}/" show_faces="false" width="200" font="verdana" colorscheme="dark"></fb:like>
-		<!-- Place this tag where you want the +1 button to render -->
-		</span>
-		<!--  Place this tag after the last plusone tag -->
-		<script type="text/javascript">
-		  (function() {
-		    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-		    po.src = 'https://apis.google.com/js/plusone.js';
-		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-		  })();
-		</script>
+		</li>
+		<li class = "like_box2">
+			<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="http://dailyrings.org/{{str_date}}/" show_faces="false" width="200" font="verdana" colorscheme="dark"></fb:like>
+			<!-- Place this tag where you want the +1 button to render -->
+			<!--  Place this tag after the last plusone tag -->
+			<script type="text/javascript">
+			  (function() {
+			    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+			    po.src = 'https://apis.google.com/js/plusone.js';
+			    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+			  })();
+			</script>
+		</li>
+
 	                
-		<!-- Include ONCE for ALL buttons in the page -->
-		<script type="text/javascript">
-		(function() {
-		    window.PinIt = window.PinIt || { loaded:false };
-		    if (window.PinIt.loaded) return;
-		    window.PinIt.loaded = true;
-		    function async_load(){
-		        var s = document.createElement("script");
-		        s.type = "text/javascript";
-		        s.async = true;
-		        if (window.location.protocol == "https:")
-		            s.src = "https://assets.pinterest.com/js/pinit.js";
-		        else
-		            s.src = "http://assets.pinterest.com/js/pinit.js";
-		        var x = document.getElementsByTagName("script")[0];
-		        x.parentNode.insertBefore(s, x);
-		    }
-		    if (window.attachEvent)
-		        window.attachEvent("onload", async_load);
-		    else
-		        window.addEventListener("load", async_load, false);
-		})();
-		</script>
+		<!-- pinterest -->
+		<li style = "border:1px solid yellow; height:30px; color:white">
+			<a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fdailyrings.org%2F{{str_date}}&media={{MEDIA_URL }}ring_images/{{image.jpg }}&description={{image.title}}: {{ caption_short }}"  class="pin-it-button" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" />Pin It</a>
+		</li>
 
-		<!-- Customize and include for EACH button in the page -->      
-		<a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fdailyrings.org%2F{{str_date}}&media={{MEDIA_URL }}ring_images/{{image.jpg }}&description={{image.title}}: {{ caption_short }}" class="pin-it-button" count-layout="horizontal">Pin It</a>   
-
-	</div> <!-- end like -->
-	<div style = "clear:both"></div>
+	</ul> <!-- end like -->
 </div>
 
 
+
 <div id = "content">
-	
+
 	<!-- social sharing gadget -->
 	<div id = "share"> 
 		<!-- AddToAny mess BEGIN -->
@@ -108,7 +85,7 @@
 	</p>	
 	
 	<h2 id = "title">{{ image.title }}</h2>
-  
+   
 	<div id = "caption">{{ image.caption|safe }}</div>	
 
 	<div id = "credit">

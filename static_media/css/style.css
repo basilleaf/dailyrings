@@ -1,3 +1,19 @@
+.center.navbar .nav,
+.center.navbar .nav > li {
+    float:none;
+    display:inline-block;
+    *display:inline; /* ie7 fix */
+    *zoom:1; /* hasLayout ie7 trigger */
+    vertical-align: top;
+}
+
+.center .navbar-inner {
+    text-align:center;
+}
+ .navbar-inner .container {
+    text-align:center;
+}
+
 body {
     /* background: #303030; */
     background: black;
@@ -14,74 +30,91 @@ A:visited {text-decoration: none}
 A:active {text-decoration: none}    
 A:hover {text-decoration: underline;}
 
-#like {        a
-    width:470px;         
-    padding:0px 20px;
-}
-#like > span.plus_box {
-    padding:0px 10px;
-    float:left;
-}
-#like > span.like_box {
-    padding:0px 10px;
-    float:right;
-}  
 
-#date {
-    margin: 20px;
-}
+
 #share, #date, #title, #more_info, #like {
     text-align:center;
 }
+
 #like {
-    margin: 30px auto;         
-    text-align:right;
-}           
-#like #PinItButton {
-	margin-left:40px;
+    display:none;
 }
+ul #like {        
+    margin:0; padding:0;
+    margin: 0 auto;         
+    margin-top:30px;
+    max-width:470px;         
+    text-align:center;
+    border:1px solid yellow;
+}
+ul#like li {
+    margin:0; padding:0;
+    width:6em; 
+    list-style-type:none;
+}
+#like > span.plus_box {
+
+}
+#like > span.like_box {
+
+}  
+.pin-it-button {
+    border:1px solid red;
+}
+
       
  
 #msg {
     color:green;
 }
-#header h1 {
+#header h1, #header h2 {
+    margin:0; padding:0;
     color:#E8E8E8;
-    font-size: small;
+    font-size: 180%;
+    font-weight:normal;
     text-align:center;
     width: 100%;
+    white-space: nowrap;
 }
-#header h1 a{
+#header h1 a, #header h2{
     color:#E8E8E8;
 }
-#nav {
-    width: 25%;
-    margin: -30px auto 0px auto;
-    padding: 5px;
-    
+#header h2 {
+    font-size:110%;
+    margin-top:-10px;
+    margin-bottom:-30px;
+}
+#header h1 a:link {text-decoration: none}
+#header h1 a:visited {text-decoration: none}
+#header h1 a:active {text-decoration: none}    
+#header h1 a:hover {color:gray;}
+
+ul#nav {
+    margin:0; padding:0;
+    margin:0px auto;
+    text-align:center;
+    position: relative;
+    top:-30px;
+    max-width:500px;
 }
 #nav li {
-    display:inline;
-    list-style-type:none
+    margin:0; padding:0;
+    list-style-type:none;
+    width:5em;
 }
-#prev a, #next a, #home a {
-    color:white;
+li#prev {
+    float:left;
+}
+li#next {
+    float:right;
 }
 
-#prev {
-    float:left;
-    text-align:left;
-}
-#next {
-    float:right;
-    text-align:right;
-}
 
 #image {
     display:block;
     clear:both;
     padding: 0;
-    margin: 40px 0px;
+    margin: 30px 10px;
     text-align:center;
 }
 #image img{
@@ -90,7 +123,7 @@ A:hover {text-decoration: underline;}
     border: 1px solid #505050;
 }
 @-moz-document url-prefix() {
-    #image img  { height:500px; }
+    #image img  { max-height:500px; }
 }
 #content {
     font-size:110%;
@@ -126,3 +159,19 @@ A:hover {text-decoration: underline;}
 .elsewhere > a > img {
     border-style: none;
 }
+
+
+/* Landscape phones and down */
+@media (max-width: 480px) { 
+
+
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {  }
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {  }
+ 
+/* Large desktop */
+@media (min-width: 1200px) {  }
