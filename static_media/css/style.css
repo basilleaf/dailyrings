@@ -133,7 +133,7 @@ li#next {
 #image img{
     max-height:80%;
     width: auto;
-    border: 1px solid #505050;
+    border: 1px solid #303030;
 }
 @-moz-document url-prefix() {
     #image img  { max-height:500px; }
