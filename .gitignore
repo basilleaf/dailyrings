@@ -2,13 +2,15 @@
 *.save
 *.bak
 .DS_Store
+__init__.py
 static_media/ring_images
 static_media/css/images/
 settings.py
 import
-publish
 deploy.txt
 libs
 todo.txt
 manage.py
-__init__.py
+secrets.py
+secrets.php
+secrets
