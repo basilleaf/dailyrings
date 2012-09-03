@@ -1,0 +1,9 @@
+Steps to fetch and import the data:
+
+1. scraper.py - grabs the data from the PDS website and inserts Image metadata into db (see daily_image/models.py)
+
+2. get_media.py - fetches the jpg images from the PDS server
+
+3. shuffle.py - shuffles new records into db by giving each unpublished image a new random pub_order
+
+4. tweets.py - writes tweets for each Image and updates the db

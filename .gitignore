@@ -6,7 +6,6 @@ __init__.py
 static_media/ring_images
 static_media/css/images/
 settings.py
-import
 deploy.txt
 libs
 todo.txt
