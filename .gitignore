@@ -9,3 +9,6 @@ import
 publish
 deploy.txt
 libs
+todo.txt
+manage.py
+__init__.py
