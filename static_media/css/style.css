@@ -37,29 +37,42 @@ A:hover {text-decoration: underline;}
 }
 
 #like {
-    display:none;
 }
-ul #like {        
+ul#like {        
+    overflow:hidden;
     margin:0; padding:0;
-    margin: 0 auto;         
-    margin-top:30px;
-    max-width:470px;         
-    text-align:center;
-    border:1px solid yellow;
+    margin: 0 auto;   
+    margin-left:37%;
+    margin-top:10px;
+    white-space:nowrap;
+    max-width:400px;
 }
 ul#like li {
     margin:0; padding:0;
-    width:6em; 
+    margin:0px 0px;
+    width:8em; 
     list-style-type:none;
+    display:inline;
 }
-#like > span.plus_box {
+#like .gplus {
 
 }
-#like > span.like_box {
+#like .gplus #button {
 
-}  
-.pin-it-button {
-    border:1px solid red;
+}
+
+#like .pin-it-button {
+    position:relative;
+    top:-7px;
+}
+#like .pin-it-button img {
+    height:26px;
+    border:0;
+    margin-right:35px;
+}
+#like .fb_like {
+    position:relative;
+    top:-3px;
 }
 
       
@@ -163,15 +176,34 @@ li#next {
 
 /* Landscape phones and down */
 @media (max-width: 480px) { 
+    ul#like {    
+        position:relative;
+        right:25px;
+    }
+    ul#like li {
+        margin:-5px;
+    }
 
 
 }
  
 /* Landscape phone to portrait tablet */
-@media (max-width: 767px) {  }
+@media (max-width: 767px) { 
+
+    ul#like {        
+        margin-left:20%;
+    }
+
+}
  
 /* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) {  }
+@media (min-width: 768px) and (max-width: 979px) { 
+
+    ul#like {        
+        margin-left:30%;
+    }
+
+ }
  
 /* Large desktop */
 @media (min-width: 1200px) {  }
