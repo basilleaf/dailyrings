@@ -6,7 +6,6 @@ from django.http import HttpResponse
 from django.db.models import Q
 from django.shortcuts import redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from daily_image import search_snippet
 import datetime, time, cgi, re
 
 
