@@ -16,7 +16,7 @@
  <h1>Search Daily Rings</h1>
   <div class = "search_form">
       <form class="navbar-search pull-left" action="/search/" method="GET">
-        <input type="text" name="q" value="{{ query|escape }}" class="search-query" placeholder="Search">
+        <input type="text" name="q" {% if query %} value="{{ query|escape }}" {% endif %} class="search-query" placeholder="Search">
         <input type="submit" value="Search" class="btn">
     </form>
   </div>
