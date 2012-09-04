@@ -14,7 +14,7 @@ def search(request):
     page_range = None
     if query:
         entry_query = get_query(query, ['title', 'caption',])
-        results_list = Image.objects.filter(pub_date__isnull=False).filter(entry_query).distinct().order_by('-pub_order')
+        results_list = Image.objects.filter(pub_date__isnull=False).filter(pub_date__lte=datetime.datetime.today()).filter(entry_query).distinct().order_by('-pub_order')
         paginator = Paginator(results_list, 25) 
 
         page = request.GET.get('page','')
