@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+         
+{% block title %}Daily Rings Search Results {% endblock %}
+
+{% block meta_description %}   
+<meta name = "description" content = "Daily Rings Search Results">
+{% endblock %}                
+
+{% block more_head %}
+  <link rel="stylesheet" type="text/css" media="screen" href="{{MEDIA_URL}}css/search.css" > 
+{% endblock %}                
+
+
+{% block content %}
+
+
+<div class = "search_page container-fluid">
+ <h1>Search Daily Rings</h1>
+  <div class = "search_form">
+      <form class="navbar-search pull-left" action="/search/" method="GET">
+        <input type="text" name="q" value="{{ query|escape }}" class="search-query" placeholder="Search">
+        <input type="submit" value="Search" class="btn">
+    </form>
+  </div>
+
+  {% if query %}
+    <h2>Results for "{{ query|escape }}":</h2>
+
+    {% if results %}
+      
+      <ul>
+      {% for image in results %}
+        <li  class = "row">
+          <div class="span4">
+             <a href = "/{{ image.pub_date|date:"Y-m-d" }}">
+              <img src = "{{MEDIA_URL}}ring_images/{{ image.jpg}}">
+             </a> 
+          </div>
+          <div class="span8">
+            <h3><a href = "/{{ image.pub_date|date:"Y-m-d" }}">{{ image.title }}</a> </h3>
+            <p>{{image.pub_date}}</p>
+            <p>
+              {{ image.tweet }}
+            </p>
+          </div>    
+        </l1>
+      {% endfor %}
+      </ul>
+  <a href = "/">home</a>
+
+  </div>
+
+
+    {% else %}
+      <p>No Images Found</p>
+    {% endif %}
+  {% endif %}
+
+</div>
+
+{% endblock %}

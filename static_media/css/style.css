@@ -164,8 +164,13 @@ h2#title {
     padding: 10px;
 }
 #footer div {
-    padding: 5px;
+    padding: 25px;
 }    
+#footer .search_form {
+    margin:auto;
+    white-space: nowrap;
+    width:300px;
+}
 #debug {
     display:none;
 }

@@ -78,6 +78,12 @@
 	</div>
 
 	<!-- about -->
+	<div class = "search_form">
+	    <form class="navbar-search pull-left" action="/search/" method="GET">
+	    <input type="text" name="q" value="{{ query|escape }}" class="search-query" placeholder="Search">
+	    <input type="submit" value="Search" class="btn">
+	  </form>
+  	</div>
 	<div>
 		<a href = "http://planetaryrings.blogspot.com/p/about.html">
 			About

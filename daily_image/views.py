@@ -3,9 +3,28 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils import simplejson
 from django.http import HttpResponse
-
-import datetime, time, cgi, re
+from django.db.models import Q
 from django.shortcuts import redirect
+import datetime, time, cgi, re
+
+
+def search(request):
+    query = request.GET.get('q', '')
+    if query:
+        qset = (
+            (Q(title__icontains=query) |
+            Q(caption__icontains=query)) & 
+            Q(pub_date__isnull=False)
+        )
+        results = Image.objects.filter(qset).distinct().order_by('-pub_order')
+    else:
+        results = []
+
+    return render_to_response("search.html", {
+        "results": results,
+        "query": query
+    }, context_instance=RequestContext(request))
+
 
 def today(request):
     date = datetime.datetime.today()
