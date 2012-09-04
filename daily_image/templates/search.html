@@ -10,9 +10,7 @@
   <link rel="stylesheet" type="text/css" media="screen" href="{{MEDIA_URL}}css/search.css" > 
 {% endblock %}                
 
-
 {% block content %}
-
 
 <div class = "search_page container-fluid">
  <h1>Search Daily Rings</h1>
@@ -24,36 +22,70 @@
   </div>
 
   {% if query %}
-    <h2>Results for "{{ query|escape }}":</h2>
+    <h2>{{ results.paginator.count }} Results for "{{ query|escape }}":</h2>
 
-    {% if results %}
+    {% if results.paginator.count %}
       
-      <ul>
-      {% for image in results %}
-        <li  class = "row">
-          <div class="span4">
-             <a href = "/{{ image.pub_date|date:"Y-m-d" }}">
-              <img src = "{{MEDIA_URL}}ring_images/{{ image.jpg}}">
-             </a> 
-          </div>
-          <div class="span8">
-            <h3><a href = "/{{ image.pub_date|date:"Y-m-d" }}">{{ image.title }}</a> </h3>
-            <p>{{image.pub_date}}</p>
-            <p>
-              {{ image.tweet }}
-            </p>
-          </div>    
-        </l1>
-      {% endfor %}
-      </ul>
-  <a href = "/">home</a>
+    <ul>
+    {% for image in results.object_list %}
+      <li  class = "row">
+        <div class="span4">
+           <a href = "/{{ image.pub_date|date:"Y-m-d" }}">
+            <img src = "{{MEDIA_URL}}ring_images/{{ image.jpg}}">
+           </a> 
+        </div>
+        <div class="span8">
+          <h3><a href = "/{{ image.pub_date|date:"Y-m-d" }}">{{ image.title }}</a> </h3>
+          <p>{{image.pub_date}}</p>
+          <p>
+            {{ image.tweet }}
+          </p>
+        </div>    
+      </l1>
+    {% endfor %}
+    </ul>
+
+
+    {% if  results.paginator.num_pages > 1 %}
+
+    <div class="pagination">
+        <ul>
+
+            <li
+            {% if not results.has_previous %}
+                class="disabled"  
+            {% endif %}
+            ><a href=" ?q={{query}}&page={{ results.previous_page_number }}">&laquo;</a>
+            </li>
+
+            {% for p in page_range %}
+            <li
+            {% if p == results.number %}
+                  class = "active"
+                {% endif %}
+            >
+                <a href="?q={{query}}&page={{ p }}">{{p}}</a>
+            </li>
+            {% endfor %}
+
+            <li
+            {% if not results.has_next %}
+                class="disabled" 
+            {% endif %}
+            ><a href="?q={{query}}&page={{ results.next_page_number }}">&raquo;</a>
+            </li>
+         </ul>
+    </div>
+
+    {% endif %}
+
+    <div style = "clear:both; padding-top:30px"><a href = "/">home</a></div>
 
   </div>
 
-
-    {% else %}
+  {% else %}
       <p>No Images Found</p>
-    {% endif %}
+  {% endif %}
   {% endif %}
 
 </div>

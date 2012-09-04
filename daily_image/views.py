@@ -5,24 +5,40 @@ from django.utils import simplejson
 from django.http import HttpResponse
 from django.db.models import Q
 from django.shortcuts import redirect
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from daily_image import search_snippet
 import datetime, time, cgi, re
 
 
 def search(request):
-    query = request.GET.get('q', '')
+    query = request.GET.get('q', None)
+    page_range = None
     if query:
-        qset = (
-            (Q(title__icontains=query) |
-            Q(caption__icontains=query)) & 
-            Q(pub_date__isnull=False)
-        )
-        results = Image.objects.filter(qset).distinct().order_by('-pub_order')
+        entry_query = get_query(query, ['title', 'caption',])
+        results_list = Image.objects.filter(pub_date__isnull=False).filter(entry_query).distinct().order_by('-pub_order')
+        paginator = Paginator(results_list, 25) 
+
+        page = request.GET.get('page','')
+
+        try:
+            results = paginator.page(page)
+            page_range = range(1,paginator.num_pages+1)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            results = paginator.page(1)
+            page_range = range(1,paginator.num_pages+1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            results = paginator.page(paginator.num_pages)
+            page_range = range(1,paginator.num_pages+1)
+
     else:
         results = []
 
     return render_to_response("search.html", {
         "results": results,
-        "query": query
+        "query": query, 
+        "page_range": page_range,
     }, context_instance=RequestContext(request))
 
 
@@ -137,3 +153,43 @@ def getTweet(image):
         tweet = tweet + '..'
     
     return tweet
+
+
+
+"""
+next are via http://julienphalip.com/post/2825034077/adding-search-to-a-django-site-in-a-snap
+"""
+def normalize_query(query_string,
+                    findterms=re.compile(r'"([^"]+)"|(\S+)').findall,
+                    normspace=re.compile(r'\s{2,}').sub):
+    ''' Splits the query string in invidual keywords, getting rid of unecessary spaces
+        and grouping quoted words together.
+        Example:
+        
+        >>> normalize_query('  some random  words "with   quotes  " and   spaces')
+        ['some', 'random', 'words', 'with quotes', 'and', 'spaces']
+    
+    '''
+    return [normspace(' ', (t[0] or t[1]).strip()) for t in findterms(query_string)] 
+
+def get_query(query_string, search_fields):
+    ''' Returns a query, that is a combination of Q objects. That combination
+        aims to search keywords within a model by testing the given search fields.
+    
+    '''
+    query = None # Query to search for every search term        
+    terms = normalize_query(query_string)
+
+    for term in terms:
+        or_query = None # Query to search for a given term in each field
+        for field_name in search_fields:
+            q = Q(**{"%s__icontains" % field_name: term})
+            if or_query is None:
+                or_query = q
+            else:
+                or_query = or_query | q
+        if query is None:
+            query = or_query
+        else:
+            query = query & or_query
+    return query
