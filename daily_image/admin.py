@@ -4,13 +4,13 @@ from django.db import models
 from priod.daily_image.models import Image
 import settings
              
-# a custom Textarea widget             
-class DifferentlySizedTextarea(forms.Textarea):
+# custom widgets            
+class CustomTextWidget(forms.Textarea):
   def __init__(self, *args, **kwargs):
     attrs = kwargs.setdefault('attrs', {})
     attrs.setdefault('cols', 40)
     attrs.setdefault('rows', 3)
-    super(DifferentlySizedTextarea, self).__init__(*args, **kwargs)
+    super(CustomTextWidget, self).__init__(*args, **kwargs)
   
 # Image admin  
 class ImageAdmin(admin.ModelAdmin):
@@ -21,7 +21,7 @@ class ImageAdmin(admin.ModelAdmin):
     ordering = ('pub_order',)       
 
     # use custom widget for CharField fields
-    formfield_overrides = { models.CharField: {'widget': DifferentlySizedTextarea}}
+    formfield_overrides = { models.CharField: {'widget': CustomTextWidget}}
     
     # where to find the thumbnail to show in the list
     def thumbnail(self, instance): 
