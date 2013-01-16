@@ -5,7 +5,6 @@
 __init__.py
 static_media/ring_images
 static_media/css/images/
-settings.py
 deploy.txt
 libs
 todo.txt
@@ -13,3 +12,4 @@ manage.py
 secrets.py
 secrets.php
 secrets
+local_settings.py
