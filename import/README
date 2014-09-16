@@ -1,6 +1,6 @@
 Steps to fetch and import the data:
 
-1. scraper.py - grabs the data from the PDS website and inserts Image metadata into db (see daily_image/models.py)
+1. scraper.py - grabs the data from the PDS website and also inserts Image metadata into db (see daily_image/models.py) but the majority of this script is the scraping code
 
 2. get_media.py - fetches the jpg images from the PDS server
 
