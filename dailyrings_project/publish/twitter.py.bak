@@ -1,0 +1,49 @@
+import sys
+sys.path.append("/home/befoream/.local/lib/python2.6/site-packages/priod")
+
+
+# Set up the Django Enviroment for running as shell script
+from django.core.management import setup_environ 
+import settings 
+setup_environ(settings)
+
+# script stuff
+import tweepy
+import urllib
+from daily_image.views import *
+import urllib2 
+ 
+base_url = "http://dailyrings.org/"
+CONSUMER_KEY = 'gnX2q45LkHpYNrToaB1Q'
+CONSUMER_SECRET = 'CB8O6m2gAoNpQsHyI9d70jybhf5wvzs43nHZUCrA'
+ACCESS_KEY = '195460470-yaZ1UTQb4igya7AlshWeFc1x1Hm8UlfWTR10JvWy'
+ACCESS_SECRET = 'u0dXNR0RMctso39aWB993hhyN36B4UN7VLktkjTuaQ'
+
+
+# using is.gd
+def shorten_url(long_url):
+    # scratch this, just use twitter..
+    return long_url
+    try:
+        base_url = 'http://is.gd/api.php?longurl=' + long_url
+        tinyurl = urllib2.urlopen(base_url).read()
+        return tinyurl
+    except:
+        print 'is.gd failed returning long url'
+        return long_url    
+    
+try: 
+    image = ImageForDate()
+    url = base_url + str(image.pub_date)
+    link = shorten_url(url) 
+    tweet = str(image.tweet) + ' ' + link                
+    print tweet
+    # twitter auth stuff
+    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET) 
+    auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)          
+    api = tweepy.API(auth)  
+    # tweet!    
+    api.update_status(tweet)
+    print 'tweeted http://twitter.com/dailyrings' + tweet
+except:
+    print 'failed to tweet:' 
