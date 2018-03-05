@@ -1,15 +1,2 @@
-*.pyc
-*.save
-*.bak
-.DS_Store
-__init__.py
-static_media/ring_images
-static_media/css/images/
-deploy.txt
-libs
-todo.txt
-manage.py
 secrets.py
-secrets.php
-secrets
-local_settings.py
+*.pyc
