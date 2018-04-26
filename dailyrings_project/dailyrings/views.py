@@ -96,7 +96,7 @@ def ArchiveImages():
 
          
 def ImageForDate(date = datetime.datetime.today(), today = datetime.datetime.today()):
-    """ takes date as date object, returns query object
+    """ takes date as date object, returns model object
         if no date is set for date find next image to publish """
     
     earliest = Image.pub_dates.earliest()
