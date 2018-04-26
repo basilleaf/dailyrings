@@ -2,15 +2,24 @@ from django.db import models
 from django.db.models import Min
 import datetime
 
+class Archive(models.Model):
+    # don't break the web
+    name = models.CharField(max_length=30, primary_key=True)  # primary key
+    pub_date = models.DateField(null=True, blank=True)
+
+    class Meta:
+        db_table = u'archives'
+
+    
 class ImageManager(models.Manager):
     def earliest(self):
         """ returns earliest pub_date as datetime.datetime"""
-        earliest_pub = Image.objects.aggregate(Min('pub_date'))['pub_date__min']
+        earliest_pub = Archive.objects.aggregate(Min('pub_date'))['pub_date__min']
         earliest_pub = datetime.datetime.fromordinal(earliest_pub.toordinal())
         return earliest_pub
     
 class Image(models.Model):
-    name = models.CharField(max_length=30, primary_key=True)
+    name = models.CharField(max_length=30, primary_key=True)  # primary key
     title = models.CharField(max_length=200)
     tweet = models.CharField(max_length=140)
     caption = models.TextField()
