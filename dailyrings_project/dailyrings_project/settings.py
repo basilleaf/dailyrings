@@ -1,6 +1,7 @@
 # Django settings for dailyrings project.
 import os
-from secrets import DB_NAME, DB_USER, DB_PASS
+from secrets import SECRET_KEY, DB_NAME, DB_USER, DB_PASS
+# Make this unique, and don't share it with anybody.
 
 Temp_Path = os.path.realpath('.')
 
@@ -62,9 +63,6 @@ MEDIA_URL = 'https://beforeamillionuniverses.com/media/rings/static_media/'
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = 'https://beforeamillionuniverses.com/media/rings/static_media/'
 
-
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'c1%r%_=%j$$^%=l_o&jgz4cpoz^o64&q$a-+6qzgdbs_bz^bsh'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
