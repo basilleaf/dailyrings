@@ -2,7 +2,7 @@
 
 A daily image website features a randomly chosen NASA press release image of planetary rings each day. Images and content are scraped from the press release ring images gallery at http://pds-rings.seti.org. 
 
-Build with Django. 
+Built with Django. 
 
 http://dailyrings.org/
 
