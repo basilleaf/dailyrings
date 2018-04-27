@@ -1,0 +1,256 @@
+/* oh what a tangled web */
+
+.center.navbar .nav,
+.center.navbar .nav > li {
+  float: none;
+  display: inline-block;
+  *display: inline; /* ie7 fix */
+  *zoom: 1; /* hasLayout ie7 trigger */
+  vertical-align: top;
+}
+
+.center .navbar-inner {
+  text-align: center;
+}
+.navbar-inner .container {
+  text-align: center;
+}
+
+body {
+  /* background: #303030; */
+  background: black;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+html {
+  margin: 0;
+  padding: 0;
+}
+a:link {
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+}
+a:active {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+#share,
+#date,
+#title,
+#more_info,
+#like {
+  text-align: center;
+}
+
+#like {
+}
+ul#like {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  margin: 0 auto;
+  margin-left: 37%;
+  margin-top: 10px;
+  white-space: nowrap;
+  max-width: 400px;
+}
+ul#like li {
+  margin: 0;
+  padding: 0;
+  margin: 0px 0px;
+  width: 8em;
+  list-style-type: none;
+  display: inline;
+}
+#like .gplus {
+}
+#like .gplus #button {
+}
+
+#like .pin-it-button {
+  position: relative;
+  top: -7px;
+}
+#like .pin-it-button img {
+  height: 26px;
+  border: 0;
+  margin-right: 35px;
+}
+#like .fb_like {
+  position: relative;
+  top: -3px;
+}
+
+#msg {
+  color: green;
+}
+#header h1,
+#header h2 {
+  margin: 0;
+  padding: 0;
+  color: #e8e8e8;
+  font-size: 180%;
+  font-weight: normal;
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+}
+#header h1 a,
+#header h2 {
+  color: #e8e8e8;
+}
+#header h2 {
+  font-size: 110%;
+  margin-top: -10px;
+  margin-bottom: -30px;
+}
+#header h1 a:link {
+  text-decoration: none;
+}
+#header h1 a:visited {
+  text-decoration: none;
+}
+#header h1 a:active {
+  text-decoration: none;
+}
+#header h1 a:hover {
+  color: gray;
+}
+
+ul#nav {
+  margin: 0;
+  padding: 0;
+  margin: 0px auto;
+  text-align: center;
+  position: relative;
+  top: -30px;
+  max-width: 500px;
+}
+#nav li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  width: 5em;
+}
+li#prev {
+  float: left;
+}
+li#next {
+  float: right;
+}
+
+#image {
+  display: block;
+  clear: both;
+  padding: 0;
+  margin: 30px 10px;
+  text-align: center;
+}
+#image img {
+  max-height: 80%;
+  width: auto;
+  border: 1px solid #303030;
+}
+@-moz-document url-prefix() {
+  #image img {
+    max-height: 500px;
+  }
+}
+
+h2#title {
+  font-weight: normal;
+  font-size: 160%;
+}
+#content {
+  margin: 0;
+  padding: 0;
+  font-size: 110%;
+  background-color: white;
+  /* background-image:url('http://media.planetaryrings.com/fadey.jpg'); */
+  background-repeat: repeat-x;
+  padding-top: 15px;
+  padding: 15px 20%;
+}
+#error_page {
+  margin: 0 0 -50px 0;
+  padding: 10px 20px;
+}
+#credit,
+#footer,
+#error_page {
+  text-align: center;
+  background: white;
+}
+#footer {
+  margin: 0px;
+  padding: 10px;
+}
+#footer div {
+  padding: 25px;
+}
+#footer .search_form {
+  margin: auto;
+  white-space: nowrap;
+  width: 250px;
+}
+#debug {
+  display: none;
+}
+#caption {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.elsewhere > a > img {
+  border-style: none;
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+  ul#like {
+    position: relative;
+    right: 25px;
+  }
+  ul#like li {
+    margin: -5px;
+  }
+  #content {
+    padding: 15px 5px;
+  }
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+  ul#like {
+    margin-left: 20%;
+  }
+  #content {
+    padding: 15px 20px;
+  }
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+  ul#like {
+    margin-left: 30%;
+  }
+  #content {
+    padding: 15px 20px;
+  }
+  #image img {
+    min-height: 400px;
+  }
+}
+
+@media (min-width: 980px) {
+  #image {
+    min-height: 400px;
+  }
+}

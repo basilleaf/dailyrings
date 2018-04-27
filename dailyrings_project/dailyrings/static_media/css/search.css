@@ -1,0 +1,117 @@
+.search_page {
+	margin:0; padding:0;
+	color:white;
+	min-height: 200px;
+
+}
+.search_page h1, .search_page h2,  .search_page h3 {
+	font-weight:normal;
+	font-size:180%;
+}
+.search_page h3 {
+	margin:0; padding:0;
+}
+.search_page h2 {
+	font-size:140%;
+	margin-bottom:40px;
+}
+.search_page ul {
+	margin:0; padding:0;
+}
+.search_page li {
+	margin:0; padding:0;
+	margin:60px 0px;
+	list-style-type: none;
+}
+.search_page .search_form {
+    display:inline-block;
+}
+
+.span4 {
+	padding:0; margin:0;
+	padding-top:10px;
+	max-width:380px;
+}
+.span8 {
+	padding:0; margin:0;
+	padding:0px 20px;
+	vertical-align: top;
+	max-width:600px;
+}
+
+.span4 img{
+	border: 1px solid #707070;
+	display:block;
+	width:380px;
+}
+.span8 p {
+	font-size:110%;
+}
+
+.pagination ul li a {
+	padding:2px 10px;
+}
+.pagination ul li.disabled a, .pagination ul li.disabled a:hover {
+	background-color: white;
+}
+
+
+
+
+
+/* Media Queries - Landscape phones and down */
+@media (max-width: 480px) { 
+	.span8 {
+		padding:0;
+	}
+	.search_page {
+		margin:20px;
+	}
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) { 
+	.span8 {
+		padding:0;
+	}
+	.search_page {
+		margin:20px;
+	}
+
+
+}
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 1024px) { 
+	.search_page {
+		margin:30px;
+	}
+	.span8 {
+		padding:10px;
+		max-width:400px;
+	}	
+
+ }
+ 
+@media (min-width: 1025px) and (max-width: 1205px) { 
+
+	.search_page {
+		margin:50px;
+	}
+	.span8 {
+		padding:0px 30px;
+		max-width:500px;
+	}	
+
+}
+
+@media (min-width: 1200px) {
+	.search_page {
+		margin:50px;
+	}
+	.span8 {
+		padding:0px 30px;
+
+	}	
+
+}
