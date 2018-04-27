@@ -1,23 +1,26 @@
 # Django settings for dailyrings project.
 import os
+from secrets import DB_NAME, DB_USER, DB_PASS
+
 Temp_Path = os.path.realpath('.')
 
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     ('Lisa Ballard', 'lballard@seti.org'),
 )
+ALLOWED_HOSTS = ['dailyrings.org','beforeamillionuniverses.com']
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'NAME': 'befoream_planetaryrings',
+        'NAME': DB_NAME,
         'ENGINE': 'django.db.backends.mysql',
-        'USER': 'befoream_ringweb',
-        'PASSWORD': 'ringsnode42',
+        'USER': DB_USER,
+        'PASSWORD': DB_PASS,
     }
 }
 
@@ -52,12 +55,12 @@ MEDIA_ROOT = '/home/befoream/www/media/rings/static_media/'
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = 'http://media.planetaryrings.com/static_media/'
+MEDIA_URL = 'https://beforeamillionuniverses.com/media/rings/static_media/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = 'http://media.planetaryrings.com/static_media/'
+ADMIN_MEDIA_PREFIX = 'https://beforeamillionuniverses.com/media/rings/static_media/'
 
 
 # Make this unique, and don't share it with anybody.
