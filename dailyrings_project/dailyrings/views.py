@@ -192,6 +192,8 @@ def get_query(query_string, search_fields):
     terms = normalize_query(query_string)
 
     for term in terms:
+        term = " %s " % term  # add spaces around the term for the search 
+                              # prevents searches for "Pan" turning up "Pandora"
         or_query = None # Query to search for a given term in each field
         for field_name in search_fields:
             q = Q(**{"%s__icontains" % field_name: term})
@@ -212,7 +214,8 @@ def search(request):
     page_range = None
     if query:
         entry_query = get_query(query, ['title', 'caption',])
-        results_list = Image.objects.filter(pub_date__isnull=False).filter(pub_date__lte=datetime.datetime.today()).filter(entry_query).distinct().order_by('-pub_date')
+        results = Image.objects.filter(entry_query)
+        results_list = sorted(results, key=lambda t: t.last_pub_date, reverse=True)
         paginator = Paginator(results_list, 25) 
 
         page = request.GET.get('page','')

@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models import Min
+from django.db.models import Min, Max
 import datetime
 
 class Archive(models.Model):
@@ -9,6 +9,7 @@ class Archive(models.Model):
 
     class Meta:
         db_table = u'archives'
+        ordering = ('-pub_date',)
 
     
 class ImageManager(models.Manager):
@@ -36,15 +37,23 @@ class Image(models.Model):
     pub_dates = ImageManager()
     objects = models.Manager()
 
-
     class Meta:
         db_table = u'images'
-        ordering = ('pub_order',)
+        ordering = ('-pub_date',)
 
     def __unicode__(self):  
         return u'%s %s' % (self.name, self.title)        
 
-                                                           
+    @property        
+    def last_pub_date(self):
+        img = Image.objects.filter(name=self.name)
+        last_pub_date = img.aggregate(Max('pub_date'))['pub_date__max']
+        if not last_pub_date:
+            img = Archive.objects.filter(name=self.name)
+            last_pub_date = img.aggregate(Max('pub_date'))['pub_date__max']
+        last_pub_date = datetime.datetime.fromordinal(last_pub_date.toordinal())
+        return last_pub_date
+        
     def save(self, *args, **kwargs):
         model = self.__class__
 

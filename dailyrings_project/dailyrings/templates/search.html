@@ -30,13 +30,13 @@
     {% for image in results.object_list %}
       <li  class = "row">
         <div class="span4">
-           <a href = "/{{ image.pub_date|date:"Y-m-d" }}">
+           <a href = "/{{ image.last_pub_date|date:"Y-m-d" }}">
             <img src = "{{MEDIA_URL}}ring_images/{{ image.jpg}}">
            </a> 
         </div>
         <div class="span8">
-          <h3><a href = "/{{ image.pub_date|date:"Y-m-d" }}">{{ image.title }}</a> </h3>
-          <p>{{image.pub_date}}</p>
+          <h3><a href = "/{{ image.last_pub_date|date:"Y-m-d" }}">{{ image.title }}</a> </h3>
+          <p>{{ image.last_pub_date|date:"Y-m-d" }}</p>
           <p>
             {{ image.tweet }}
           </p>
